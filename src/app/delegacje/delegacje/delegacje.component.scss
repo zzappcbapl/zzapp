@@ -1,0 +1,23 @@
+#tabelaParent {
+
+    .mat-elevation-z8 {
+        width: auto;
+        height: auto;    
+
+        table {
+            width: 100%!important;
+
+            td, th {
+                width: auto;
+            }
+        }
+        .mat-form-field {
+            font-size: 14px;
+            width: 100%;          
+        }
+    }
+     ::ng-deep .mat-cell, .mat-header-cell {
+        padding: 10px !important;
+        text-align: center !important;
+    }
+}
