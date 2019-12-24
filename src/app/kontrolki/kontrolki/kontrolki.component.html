@@ -1,0 +1,61 @@
+
+<div id="kontrolki-parent" class="card-container">
+    
+    <h3 class="titleHead">Różne kontrolki HTML</h3>
+    
+    <div id="dane-container">
+        
+        <p><span>NIP:</span> {{nip}}</p>
+        <p><span>REGON:</span> {{regon}}</p>
+        <p><span>NAZWA:</span> {{nazwa}}</p>
+        <p><span>DATA POWSTANIA:</span> {{data}}</p>
+        <p><span>ULICA:</span> {{ulica}}</p>
+        <p><span>NUMER DOMU:</span> {{nrdomu}}</p>
+        <p><span>NUMER MIESZKANIA:</span> {{nrmieszkania}}</p>
+        <p><span>UWAGI:</span> {{uwagi}}</p>
+        
+    </div>
+    
+    <div id="listy-container" fxLayoutGap="10px">
+        
+        <div id="lista-kolory" class="lista">
+            <mat-form-field>
+                <mat-label>Lista Kolorów</mat-label>
+                <mat-select [(value)]="kolor">
+                    <mat-option *ngFor="let kol of listaKolorow" [value]="kol.color">
+                        {{kol.color}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <p><span>Wybrany kolor:</span> {{kolor}}</p>
+        </div>
+        
+        <div id="lista-vat" class="lista">
+            <mat-form-field>
+                <mat-label>Lista VAT</mat-label>
+                <mat-select [(value)]="vat">
+                    <mat-option *ngFor="let vat of listaVat" [value]="vat.vat">
+                        {{vat.vat}}
+                    </mat-option>
+                </mat-select>
+             </mat-form-field>
+
+            <p><span>Wybrany VAT:</span> {{vat}}</p>
+        </div>
+        
+        <div id="lista-elementy" class="lista">
+            <mat-form-field>
+                <mat-label>Lista elementów</mat-label>
+                <mat-select [(value)]="element" [ngModel]="element" (ngModelChange)="onChange($event)">
+                    <mat-option *ngFor="let elem of listaElementow; index as i;" [value]="i+1">
+                        {{1+i + '. ' + elem.elem}}
+                    </mat-option>
+                </mat-select>
+             </mat-form-field>
+
+            <p><span>Wybrany element:</span> {{element}}</p>
+        </div>
+        
+    </div>        
+</div>
