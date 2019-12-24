@@ -1,0 +1,46 @@
+<div id="tabelaParent">
+    
+    <h3 class="titleHead">Tabela Delegacji</h3>
+    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- lp -->
+        <ng-container matColumnDef="lp">
+            <th mat-header-cell *matHeaderCellDef>Lp.</th>
+            <td mat-cell *matCellDef="let element"> {{element.lp}}</td>
+        </ng-container>
+
+      <!-- imieNazwisko -->
+        <ng-container matColumnDef="imieNazwisko">
+            <th mat-header-cell *matHeaderCellDef>Imię i Nazwisko</th>
+            <td mat-cell *matCellDef="let element"> {{element.imieNazwisko}}</td>
+        </ng-container>
+
+      <!-- dataOd -->
+        <ng-container matColumnDef="dataOd">
+            <th mat-header-cell *matHeaderCellDef>Data od</th>
+            <td mat-cell *matCellDef="let element"> {{element.dataOd}}</td>
+        </ng-container>
+
+      <!-- dataDo -->
+        <ng-container matColumnDef="dataDo">
+            <th mat-header-cell *matHeaderCellDef>Data do</th>
+            <td mat-cell *matCellDef="let element"> {{element.dataDo}}</td>
+        </ng-container>
+
+        <!-- miejsceWyjazdu -->
+        <ng-container matColumnDef="miejsceWyjazdu">
+            <th mat-header-cell *matHeaderCellDef>Miejsce wyjazdu</th>
+            <td mat-cell *matCellDef="let element"> {{element.miejsceWyjazdu}}</td>
+        </ng-container>
+
+      <!-- miejscePrzyjazdu -->
+        <ng-container matColumnDef="miejscePrzyjazdu">
+            <th mat-header-cell *matHeaderCellDef>Miejsce przyjazdu</th>
+            <td mat-cell *matCellDef="let element"> {{element.miejscePrzyjazdu}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+    </table>
+</div>
