@@ -1,0 +1,48 @@
+$nav-button-color: #00838F;
+
+/*SMALL PHONE*/
+$small-phone : '(min-width: 320px) and (max-width: 359px) and (orientation : portrait)';
+
+/*PHONE PORTRAIT*/
+$phone : '(min-width: 360px) and (max-width: 531px) and (orientation : portrait)';
+
+/*SMALL TABLET PORTRAIT*/
+$tablet-portrait-small: '(min-width: 532px) and (max-width: 719px) and (orientation : portrait)';
+
+/*TABLET PORTRAIT*/
+$tablet-portrait: '(min-height: 736px) and (min-width: 720px) and (max-width: 1024px) and (orientation : portrait)';
+
+
+
+/*PHONE LANDSCAPE*/
+$phone-landscape : '(min-width: 319px) and (max-width: 853px) and (orientation : landscape)';
+
+/*TABLET LANDSCAPE*/
+$tablet-landscape:'(min-height: 533px) and (min-width: 854px) and (max-width: 1280px) and (orientation : landscape)'; 
+
+/*MEDIUM DESKTOP*/
+$medium-desktop: '(min-width: 1281px) and (max-width: 1440px)';
+
+/*LARGE DESKTOP*/
+$large-desktop: '(min-width: 1441px)';
+
+$non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
+$retina: '(min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx)';
+
+$breakpoints: (
+    "phone":        400px,
+    "phone-wide":   480px,
+    "phablet":      560px,
+    "tablet-small": 640px,
+    "tablet":       768px,
+    "tablet-wide":  1024px,
+    "desktop":      1248px,
+    "desktop-wide": 1440px
+);
+
+
+$myFont: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+
+$blueForActive:  #007bff;
+$blueBeforeHover:  #1566bd;
