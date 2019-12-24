@@ -1,0 +1,75 @@
+<div id="tabelaParent">
+    
+    <h3 class="titleHead">Tabela Pracowników</h3>
+    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- lp -->
+        <ng-container matColumnDef="lp">
+            <th mat-header-cell *matHeaderCellDef>Lp. </th>
+            <td mat-cell *matCellDef="let element"> {{element.lp}}</td>
+        </ng-container>
+
+      <!-- imie -->
+        <ng-container matColumnDef="imie">
+            <th mat-header-cell *matHeaderCellDef>Imie</th>
+            <td mat-cell *matCellDef="let element"> {{element.imie}}</td>
+        </ng-container>
+
+      <!-- nazwisko -->
+        <ng-container matColumnDef="nazwisko">
+            <th mat-header-cell *matHeaderCellDef>Nazwisko</th>
+            <td mat-cell *matCellDef="let element"> {{element.nazwisko}}</td>
+        </ng-container>
+
+      <!-- stanowisko -->
+        <ng-container matColumnDef="stanowisko">
+            <th mat-header-cell *matHeaderCellDef>Stanowisko</th>
+            <td mat-cell *matCellDef="let element"> {{element.stanowisko}}</td>
+        </ng-container>
+
+        <!-- dataZatrudnienia -->
+        <ng-container matColumnDef="dataZatrudnienia">
+            <th mat-header-cell *matHeaderCellDef>Data zatrudnienia</th>
+            <td mat-cell *matCellDef="let element"> {{element.dataZatrudnienia}}</td>
+        </ng-container>
+
+      <!-- dniUrlopu -->
+        <ng-container matColumnDef="dniUrlopu">
+            <th mat-header-cell *matHeaderCellDef>Ilosc dni urlopowych</th>
+            <td mat-cell *matCellDef="let element"> {{element.dniUrlopu}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr mat-row *matRowDef="let row;  index as i; columns: tableColumns;" 
+            [style.background-color]="(i % 2 === 1) ? nieparzyste : parzyste"></tr>
+    </table>
+    
+    <div id="colorPickers" fxLayoutGap="10px">
+        
+        <div id="pickerNieparzystych" class="colorPickery">
+            <mat-form-field>
+              <mat-label>Wiersze Nieparzyste</mat-label>
+              <mat-select [(value)]="nieparzyste">
+                <mat-option>None</mat-option>
+                <mat-option value="maroon">Czerwony</mat-option>
+                <mat-option value="purple">Fioletowy</mat-option>
+                <mat-option value="green">Zielony</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        
+        <div id="pickerParzystych" class="colorPickery">
+            <mat-form-field>
+              <mat-label>Wiersze Parzyste</mat-label>
+              <mat-select [(value)]="parzyste">
+                <mat-option>None</mat-option>
+                <mat-option value="orange">Pomarańczowy</mat-option>
+                <mat-option value="olive">Oliwkowy</mat-option>
+                <mat-option value="navy">Granatowy</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        
+    </div>
+</div>
