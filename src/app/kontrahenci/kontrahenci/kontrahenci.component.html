@@ -1,0 +1,142 @@
+<div id="tabelaParent">
+    
+    <h3 class="titleHead">Tabela Kontrahentów</h3>
+    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- lp -->
+        <ng-container matColumnDef="nip">
+            <th mat-header-cell *matHeaderCellDef>NIP</th>
+            <td mat-cell *matCellDef="let element"> {{element.nip}}</td>
+        </ng-container>
+
+      <!-- imieNazwisko -->
+        <ng-container matColumnDef="regon">
+            <th mat-header-cell *matHeaderCellDef>REGON</th>
+            <td mat-cell *matCellDef="let element"> {{element.regon}}</td>
+        </ng-container>
+
+      <!-- dataOd -->
+        <ng-container matColumnDef="nazwa">
+            <th mat-header-cell *matHeaderCellDef>NAZWA</th>
+            <td mat-cell *matCellDef="let element"> {{element.nazwa}}</td>
+        </ng-container>
+
+      <!-- dataDo -->
+        <ng-container matColumnDef="platnikVat">
+            <th mat-header-cell *matHeaderCellDef>CZY PŁATNIK VAT?</th>
+            <td mat-cell *matCellDef="let element"> {{(element.platnikVat === 1 ? 'Tak' : 'Nie')}}</td>
+        </ng-container>
+
+        <!-- miejsceWyjazdu -->
+        <ng-container matColumnDef="ulica">
+            <th mat-header-cell *matHeaderCellDef>ULICA</th>
+            <td mat-cell *matCellDef="let element"> {{element.ulica}}</td>
+        </ng-container>
+
+      <!-- miejscePrzyjazdu -->
+        <ng-container matColumnDef="nrDomu">
+            <th mat-header-cell *matHeaderCellDef>NUMER DOMU</th>
+            <td mat-cell *matCellDef="let element"> {{element.nrDomu}}</td>
+        </ng-container>
+        
+      <!-- miejscePrzyjazdu -->
+        <ng-container matColumnDef="nrMieszkania">
+            <th mat-header-cell *matHeaderCellDef>NUMER MIESZKANIA</th>
+            <td mat-cell *matCellDef="let element"> {{element.nrMieszkania}}</td>
+        </ng-container>
+        
+      <!-- akcje -->
+        <ng-container matColumnDef="akcje">
+            <th mat-header-cell *matHeaderCellDef>EDYTUJ/USUŃ</th>
+            <td mat-cell *matCellDef="let element; index as i;">
+                <div id="actionButtons">
+                    <button mat-button (click)="editAction('edit', i)">Edytuj</button>
+                    <button mat-button (click)="deleteEntry(i)">Usuń</button>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+        <tr mat-row *matRowDef="let row; index as rowIndex; columns: tableColumns;" id="rowIndex"></tr>
+    </table>
+    
+    <div id="buttonPanel">
+    
+        <div class="card card-small panelButton" (click)="addAction('add')" tabindex="0">
+            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+            <span>Nowy Kontrahent</span>
+        </div>
+        
+        <div [hidden]="!addFormOpen" id="addPanel">
+        
+            <h3 fxFlexAlign="center">Dane Kontrahenta</h3>
+            
+            <form #kontForm [formGroup]="kontrahentForm">           
+               
+                <div class="form-group">
+                     <mat-form-field>
+                         <label for="kontFormNip" class="kontFormLabel">NIP</label>
+                         <input #kontFormNip matInput placeholder="np. 132743226" formControlName="kontFormNip" required class="kontrahentFormInput" type="number">
+                         <mat-error *ngIf="kf.kontFormNip.invalid">{{getErrorMessage('nip')}}</mat-error>
+                    </mat-form-field>               
+                </div>
+
+                <div class="form-group">
+                   <mat-form-field>
+                         <label for="kontFormRegon" class="kontFormLabel">REGON</label>
+                         <input #kontFormRegon matInput placeholder="np. 132743226" formControlName="kontFormRegon" required class="kontrahentFormInput" type="number">
+                         <mat-error *ngIf="kf.kontFormRegon.invalid">{{getErrorMessage('regon')}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                   <mat-form-field>
+                         <label for="kontFormNazwa" class="kontFormLabel">NAZWA</label>
+                         <input #kontFormNazwa matInput placeholder="np. MicroExample Ltd" formControlName="kontFormNazwa" required class="kontrahentFormInput">
+                         <mat-error *ngIf="kf.kontFormNazwa.invalid">{{getErrorMessage('nazwa')}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div id="platnikVatCkeckbox" class="form-group">
+                  
+                    <label for="kontFormPlatnikVat" class="kontFormLabel">CZY PŁATNIK VAT?</label>
+                    <mat-checkbox #kontFormPlatnikVatcheckbox formControlName="kontFormPlatnikVat"></mat-checkbox>
+                    
+                </div>
+
+                <div class="form-group">
+                   <mat-form-field>
+                         <label for="kontFormUlica" class="kontFormLabel">ULICA</label>
+                         <input #kontFormUlica matInput placeholder="np. Sienkiewicza" formControlName="kontFormUlica" required class="kontrahentFormInput">
+                         <mat-error *ngIf="kf.kontFormUlica.invalid">{{getErrorMessage('ulica')}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                   <mat-form-field>
+                         <label for="kontFormNrDomu" class="kontFormLabel">NR DOMU</label>
+                         <input #kontFormNrDomu matInput placeholder="np. 20" formControlName="kontFormNrDomu" required class="kontrahentFormInput"  type="number">
+                         <mat-error *ngIf="kf.kontFormNrDomu.invalid">{{getErrorMessage('nrDomu')}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                   <mat-form-field>
+                         <label for="kontFormNrMieszkania" class="kontFormLabel">NR MIESZKANIA</label>
+                         <input #kontFormNrMieszkania matInput placeholder="np. 103" formControlName="kontFormNrMieszkania" required class="kontrahentFormInput"  type="number">
+                         <mat-error *ngIf="kf.kontFormNrMieszkania.invalid">{{getErrorMessage('nrMieszkania')}}</mat-error>
+                    </mat-form-field>
+                </div>
+              
+                <div id="formSubmmit" class="submitBtn form-group">			
+                    <button id="kontrahentFormSubmit" type="submit" class="btn btn-primary" (click)="onSubmit()">Wyślij</button>
+                </div>
+
+            </form>
+             
+        </div>
+        
+    </div>
+</div>
