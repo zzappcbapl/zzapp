@@ -1,0 +1,57 @@
+#tabelaParent {
+
+    .mat-elevation-z8 {
+        width: auto;
+        height: auto;    
+
+        table {
+            width: 100%!important;
+
+            td, th {
+                width: auto;
+            }
+        }
+        .mat-form-field {
+            font-size: 14px;
+            width: 100%;          
+        }
+    }   
+    #colorPickers {
+        width: auto;
+        height: auto;
+        display: flex;
+        margin-top: 10px;
+         
+        .colorPickery {
+            display: grid;            
+        }
+        #pickerNieparzystych {
+            width: 50%;
+        }
+        #pickerParzystych {
+            width: 50%;
+        }
+    }
+    ::ng-deep .mat-cell, .mat-header-cell {
+        padding: 10px !important;
+        text-align: center !important;
+    }
+    ::ng-deep .mat-form-field-wrapper {
+        padding: 0 15px !important;
+    }
+    ::ng-deep .mat-form-field {
+        margin-bottom: 10px;
+
+        border: 1.5px groove gray!important;
+        border-radius: 3px!important;
+    }
+    ::ng-deep .mat-form-field * {
+        color: darkgreen !important;
+    }
+    ::ng-deep .mat-select {
+        height: 24px !important;
+    }
+    ::ng-deep .mat-form-field-underline {
+        display: none!important;
+    }
+}
